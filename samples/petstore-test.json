@@ -1,0 +1,22 @@
+{
+  "pet-post-good": {
+    "id": 999,
+    "category": {
+      "id": 0,
+      "name": "string"
+    },
+    "name": "doggie",
+    "photoUrls": [
+      "string"
+    ],
+    "status": "available"
+  },
+  "pet-post-bad": {
+    "id": 999
+  },
+
+  "pet-get": {
+    "status": "available"
+  }
+
+}

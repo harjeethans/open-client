@@ -1,0 +1,80 @@
+{
+  "name": "nu-open-client",
+  "version": "0.0.11",
+  "description": "A client for swagger specs.",
+  "main": "dist/src/open-client.js",
+  "scripts": {
+    "analyse": "webpack --json > analysis.json",
+    "babel-src": "NODE_ENV=production npx babel src --out-dir dist/src",
+    "build": "npm run test && webpack --env dev && webpack --env build && npm run babel-src",
+    "copy-src": "cp -r ./src ./dist",
+    "dev": "webpack --progress --colors --watch --env dev",
+    "generate-docs": "./node_modules/.bin/jsdoc -c ./conf.json -t ./node_modules/ink-docstrap/template -R README.md ./src",
+    "test": "NODE_ENV=test ./node_modules/mocha/bin/_mocha",
+    "test-cover": "NODE_ENV=test ./node_modules/.bin/nyc ./node_modules/mocha/bin/_mocha",
+    "report": "nyc report --reporter=html",
+    "tdd:mac": "./node_modules/.bin/_mocha --require mocha-babel",
+    "schema-server": "./node_modules/.bin/http-server './samples'"
+  },
+  "author": {
+    "name": "Harjeet Singh",
+    "url": "https://github.com/harjeethans"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/harjeethans/open-client"
+  },
+  "keywords": [
+    "swagger",
+    "node",
+    "intent",
+    "openapi"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "babel": "^6.23.0",
+    "babel-cli": "^6.26.0",
+    "babel-core": "6.26.0",
+    "babel-eslint": "7.2.3",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-plugin-istanbul": "^4.1.5",
+    "babel-plugin-transform-async-to-generator": "^6.24.1",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-runtime": "6.26.0",
+    "chai": "^4.1.2",
+    "http-server": "^0.11.1",
+    "ink-docstrap": "^1.3.2",
+    "istanbul": "^0.4.5",
+    "jsdoc": "^3.5.5",
+    "jshint": "^2.9.5",
+    "jshint-loader": "^0.8.4",
+    "mocha": "^5.0.0",
+    "nyc": "^11.4.1",
+    "qs": "^6.5.1",
+    "sinon": "^4.2.2",
+    "sinon-chai": "^2.14.0",
+    "webpack": "^3.10.0"
+  },
+  "dependencies": {
+    "ajv": "^6.0.1",
+    "debug": "^3.1.0",
+    "form-data": "^2.3.1",
+    "lodash": "^4.17.4",
+    "node-fetch": "^1.7.3",
+    "request": "^2.83.0",
+    "request-promise-native": "^1.0.5",
+    "swagger-parser": "^4.0.1",
+    "whatwg-fetch": "^2.0.3"
+  },
+  "nyc": {
+    "exclude": [
+      "test/**",
+      "**/*.specs.js"
+    ]
+  },
+  "files": [
+    "dist"
+  ]
+}
